@@ -4,6 +4,10 @@
 
 THis repository contains a Next.js Static Web App to interface with the [backend app](https://github.com/fahminlb33/azurehackathon2022_backend) of Evangelion01 system.
 
+Video: still in progress
+Presentation: https://docs.google.com/presentation/d/1PYp3iUQk7AS_qXICWVH6bCzVSjrARw7D/edit?usp=sharing&ouid=101893075820394963212&rtpof=true&sd=true
+Demo: http://evangelion01.kodesiana.com/
+
 Links to related repo:
 
 - [Backend](https://github.com/fahminlb33/azurehackathon2022_backend)
