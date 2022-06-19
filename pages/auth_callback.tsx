@@ -1,7 +1,9 @@
+import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { LOGIN_REDIRECT } from "../constant";
 
-const AuthCallbackPage = () => {
+const AuthCallbackPage: NextPage = () => {
   const router = useRouter();
   let authToken = "";
   if (typeof window !== "undefined") {
@@ -10,10 +12,10 @@ const AuthCallbackPage = () => {
   }
 
   useEffect(() => {
-    router.push("/input-user");
+    router.push(LOGIN_REDIRECT);
   }, [router]);
 
-  return <></>;
+  return null;
 };
 
 export default AuthCallbackPage;

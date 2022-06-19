@@ -2,13 +2,12 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { LOGIN_REDIRECT, LOGIN_URL } from "../constant";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   const [session, setSession] = useState("");
   const router = useRouter();
-  const loginUrl =
-    "https://evangelion01msapac.b2clogin.com/evangelion01msapac.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_signupsignin&client_id=925790c8-225b-45ef-831f-c3e0a02f6030&nonce=defaultNonce&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth_callback&scope=openid&response_type=id_token&prompt=login";
   const handleLogout = () => {
     localStorage.removeItem("token");
     setSession("");
@@ -19,9 +18,9 @@ const Home: NextPage = () => {
     setSession(authToken || "");
 
     if (authToken) {
-      router.push("/input-user");
+      router.push(LOGIN_REDIRECT);
     } else {
-      router.push(loginUrl);
+      router.push(LOGIN_URL);
     }
   }, [router]);
 
@@ -48,9 +47,19 @@ const Home: NextPage = () => {
             </p>
 
             <div className={styles.grid}>
-              <a href="#" onClick={handleLogout} className={styles.card}>
+              <a onClick={handleLogout} className={styles.card}>
                 <h2>Logout &rarr;</h2>
-                <p>Go to authentication page.</p>
+                <p>Log out from current session.</p>
+              </a>
+
+              <a href="#" onClick={handleLogout} className={styles.card}>
+                <h2>Upload Data &rarr;</h2>
+                <p>Upload student and grade data.</p>
+              </a>
+
+              <a href="#" onClick={handleLogout} className={styles.card}>
+                <h2>Result &rarr;</h2>
+                <p>Get current prediction result.</p>
               </a>
             </div>
           </>
@@ -61,7 +70,7 @@ const Home: NextPage = () => {
             </p>
 
             <div className={styles.grid}>
-              <a href={loginUrl} className={styles.card}>
+              <a href={LOGIN_URL} className={styles.card}>
                 <h2>Login &rarr;</h2>
                 <p>Go to authentication page.</p>
               </a>
